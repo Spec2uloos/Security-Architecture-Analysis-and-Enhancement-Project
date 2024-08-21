@@ -1,0 +1,17 @@
+Recommandations au niveau de l’architecture réseau de l’entreprise X:
+
+-	Installation des antivirus et antimalware mis à jour sur tous les serveurs, y compris les non Windows.
+-	Limiter les accès aux ports, en segmentant le réseau en VLANs et en utilisant le filtrage IP et les contrôles d’accès (NAC).
+-	Utiliser les protocoles sécurisés comme les dernières versions de SSL/TLS
+-	Mise en place de solutions VPN pour sécuriser les connexions distantes, et pour une couche supplémentaire de sécurité.
+-	Exiger l’utilisation des mots de passes forts et l’authentification multifactorielle avec Azure AD sur TOUS les employés.
+-	Mise en place de solution de journalisation, de détection et de prévention d’incidents SIEM, d’un IPS, IDS.
+-	Limiter les élévations de privilèges en configurant les rôles et les privilèges minimums nécessaires pour chaque tache (zéro trust)
+-	Mise en place des protocoles sécurisés comme HTTPS pour les sites web et SMTPS pour le courrier électronique et forcer l’utilisation du chiffrement fort pour les données sensibles.
+-	Ajouter des zones pour les serveurs et équipements sensibles, tel que la zone SCADA, zone pour les serveurs de base de données.
+-	Installation des dispositifs de protection contre les incendies et les distorsions de l’onde électrique.
+-	Renforcer la résilience en dispatchant les serveurs sur différentes zones géographiques (on peut considérer une migration ou ajout des serveurs en infonuagique)
+-	Placer les routeurs, les équipements télécoms, IoT ou tout équipement critique dans des armoires verrouillées a accès très limite.
+-	Mise a niveau des protocoles utilises sur le jump point vers des versions plus sécurisées : SSHv2.
+-	Ajouts des serveurs suivants : Serveur de Sauvegarde, Proxy server, Serveur de gestion des cameras, Azure ad connect, serveur de certificat, serveur PBX..
+-	Le choix des infrastructures, des plateformes ou des logiciels infonuagiques doit être avec les niveaux de sécurité les plus avances disponibles, surtout quand on en manipule des données critiques
