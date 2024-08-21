@@ -1,0 +1,53 @@
+
+Recommandations au niveau de l’architecture réseau de l’entreprise X:
+
+-	Installation des antivirus et antimalware mis à jour sur tous les serveurs, y compris les non Windows.
+-	Limiter les accès aux ports, en segmentant le réseau en VLANs et en utilisant le filtrage IP et les contrôles d’accès (NAC).
+-	Utiliser les protocoles sécurisés comme les dernières versions de SSL/TLS
+-	Mise en place de solutions VPN pour sécuriser les connexions distantes, et pour une couche supplémentaire de sécurité.
+-	Exiger l’utilisation des mots de passes forts et l’authentification multifactorielle avec Azure AD sur TOUS les employés.
+-	Mise en place de solution de journalisation, de détection et de prévention d’incidents SIEM, d’un IPS, IDS.
+-	Limiter les élévations de privilèges en configurant les rôles et les privilèges minimums nécessaires pour chaque tache (zéro trust)
+-	Mise en place des protocoles sécurisés comme HTTPS pour les sites web et SMTPS pour le courrier électronique et forcer l’utilisation du chiffrement fort pour les données sensibles.
+-	Ajouter des zones pour les serveurs et équipements sensibles, tel que la zone SCADA, zone pour les serveurs de base de données.
+-	Installation des dispositifs de protection contre les incendies et les distorsions de l’onde électrique.
+-	Renforcer la résilience en dispatchant les serveurs sur différentes zones géographiques (on peut considérer une migration ou ajout des serveurs en infonuagique)
+-	Placer les routeurs, les équipements télécoms, IoT ou tout équipement critique dans des armoires verrouillées a accès très limite.
+-	Mise a niveau des protocoles utilises sur le jump point vers des versions plus sécurisées : SSHv2.
+-	Ajouts des serveurs suivants : Serveur de Sauvegarde, Proxy server, Serveur de gestion des cameras, Azure ad connect, serveur de certificat, serveur PBX..
+-	Le choix des infrastructures, des plateformes ou des logiciels infonuagiques doit être avec les niveaux de sécurité les plus avances disponibles, surtout quand on en manipule des données critiques
+
+	
+Stratégie de surveillance :
+
+-	Collecte des journaux : 
+o	Outils : Utiliser un serveur SIEM (Security Information and Event Management) pour collecter et agréger les logs de tous les équipements de sécurité du réseau, ainsi que les événements critiques des serveurs, postes de travail, les routeurs, les pares-feux et les équipements de sécurité/télécom.
+o	Emplacement : Zone Acces Restreint , accessible uniquement par les administrateurs du reseau et sécurité.
+o	Fournisseur recommande :Splunk, IBM 
+
+-	Analyse des journaux : 
+o	Outils : Utiliser des outils d'analyse de journaux tel que (SolarWinds Log Analyzer - Graylog) pour surveiller en temps réel les activités du réseau et détecter les comportements suspects
+o	Emplacement : Zone Acces Restreint , accessible uniquement par les administrateurs du reseau et sécurité.
+o	Fournisseur recommande : SolarWinds Log Analyzer - Graylog
+
+-	Système d’Alertes pour les activités suspectes :
+o	Outils : en utilisant des outils tels que (Zabbix ou Nagios) ces derniers peuvent être configurés pour surveiller des métriques telles que l'utilisation du CPU, la mémoire, l'utilisation de l'espace disque et la disponibilité des services, et doivent être envoyées en temps réel à l’équipe de sécurité dédiée (SOC), qui sera chargée d'investiguer et de répondre aux alertes.
+o	Emplacement : Zone D’Accès restreint.
+o	Fournisseur recommande : Zabbix ou Nagios
+
+-	Systèmes de détection d’inclusion : 
+o	Outils : un IDPS
+o	Emplacement :PIZ , Point interface de zones
+o	Fournisseur recommande : Snort, Suricata, Cisco Firepower, Palo Alto Networks
+
+-	Réponse aux incidents :
+o	Outils : sur un serveur tel que Jira service management pour suivre et gérer les incidents en mettant en place des procedures claires et des plans de sauvegarde et de reduction de dommages
+o	Emplacement : Zone Acces Restreint
+o	Fournisseur recommande : Jira -Atlassian , Microsoft sentinel,  Azure security incident management program
+
+-	Mises à jour régulières : 
+o	Outils : Utiliser des outils de gestion des correctifs de Microsoft sur Un serveur tels que (WSUS (Windows Server Update Services) ou (SCCM (System Center Configuration Manager) afin de mettre régulièrement à jour les équipements de sécurité de votre réseau, notamment les pares-feux, les antivirus et les outils de détection d'intrusion.
+
+-	Fournir des formations en sécurité : 
+o	Outils : formations présentielles ou en ligne et sensibilisation pratique en utilisant des outils tels que KnowBe4 : effective awareness training pour tester la sécurité des utilisateurs.
+
