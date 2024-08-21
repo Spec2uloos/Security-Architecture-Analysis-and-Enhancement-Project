@@ -1,0 +1,34 @@
+ Partie 1 : Faire l’analyse de l’architecture de sécurité existante en critiquant les forces et les faiblesses.
+ 
+Forces :
+-	Deux routeurs de bordure pour équilibrer la charge et le basculement et éviter les arrêts de services lors de la panne du système principal.
+-	Segmentation du réseau en 3 zones (Interne, LAN et DMZ) pour fournir des services de sécurité uniques par segment de réseau, et permettre ainsi de mieux contrôler le trafic réseau et les accès, d'optimiser les performances et d'améliorer la stratégie sécuritaire.
+-	Utilisation de deux Firewall de la nouvelle génération (NGFW) : une meilleure sécurité contre les menaces et une meilleure gestion des politiques de sécurité réseau
+-	Une zone DMZ hébergeant les services exposés à Internet.
+-	La configuration de NAT et PAT, ce qui limite les accès depuis internet.
+-	Configuration de 3 VLANs (en utilisant des switch CISCO) aidant a organiser le trafic, limiter les accès, tout en garantissant une souplesse lors de l’administration ou la modification du réseau.
+-	Les postes de travail et les serveurs Windows équipes par des antivirus du fournisseur Norton.
+-	L’hébergement de certains services en infonuagique assure la disponibilité, la sécurité et la flexibilité
+-	Le serveur antispam protège les serveurs de messagerie pour une meilleure sécurité et aider les employer à distinguer les Spams, les Scams, le phishing et protège contre les attaques de déni de service.
+-	3 serveurs de sauvegarde pour faciliter les sauvegardes des fichiers et des bases de données et faciliter la récupération rapide, afin d’assurer la disponibilité. 
+-	2 serveurs Syslog Linux centralisant les logs, permettant un meilleur suivi des journalisations et de l’historiques des équipements réseau.
+-	Utilisation de Azure AD pour la gestion des identités.
+-	Utilisation du routage dynamique OSPF, ce qui augmente la performance et la flexibilité et l’évolutivité.
+-	Mise en place du Spanning Tree Protocol : pour éviter que le trafic circule indéfiniment ce qui améliore la performance et la résilience du réseau. 
+-	Mise en place des récepteurs BOSH pour la surveillance des équipements IoT.
+
+Faiblesses :
+
+-	Les antivirus non installes sur les postes de travails et les serveurs non Windows.
+-	Non-respect de la politique de sécurité et du code d’éthique de l’entreprise (lors de la navigation web) 
+-	Les ports sont ouverts sans restrictions sur les Switch (aucune sécurité à ce niveau, une personne malveillante pourrait se brancher sur un port du switch non utilisé et ainsi accéder au réseau)
+-	L’authentification multi-tenant avec azure AD n’est configurée que pour certains employés.
+-	Des API non sécurises : peuvent ouvrir la porte devant les malveillants pour accéder aux credentials des employés ou a d’autres donnes critiques. 
+-	Absence de journalisation en interne.
+-	Absence de NIDS-Proxy, du SIEM, et de l’IAM.
+-	Le protocole SSH v1 contient des faiblesses fondamentales qui rendent les sessions vulnérables et sensible aux attaques cryptographique MITM. 
+-	Pas de zone de réseau industriel, les actifs SCADA risquent d’être compromis si mal sécurisées.
+-	Manque de sécurisation au niveau IoT : exposant le réseau a des risques lies aux appareils connectes.
+-	Données sensibles utilises dans des applications infonuagiques (NAS),et risque de compromission si non chiffres ou mal sécurisés.
+-	 Le protocole FTP manque une couche de sécurité (manque de cryptage, possibilité de compromission des donnes par des parties non autoritaires).  
+-	Manque d’audit périodique
