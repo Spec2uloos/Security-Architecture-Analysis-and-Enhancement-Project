@@ -1,0 +1,25 @@
+
+La segmentation du réseau actuelle en trois zones (LAN, WAN et DMZ) est une bonne pratique de sécurité. Cependant, il est important d'assurer une segmentation plus fine des ressources en fonction de leur sensibilité et de leur criticité pour assurer de (C.I.D) de l’information
+
+Segmentation du réseau actuelle :
+-	Zone LAN : Pour les utilisateurs et les serveurs internes.
+-	Zone WAN : Pour l'accès à Internet.
+-	Zone DMZ : Pour les services accessibles depuis Internet.
+
+
+La nouvelle répartition des zones : 
+-	Zone DMZ :  web server -relais DNS -SFTP server
+-	Zone LAN :
+o	ZAR: Serveurs de sauvegarde, MSSQL server, SIEM,outils de surveillance et securite
+o	Zone opérationnelle de gestion : AD, DHCP, DNS, Exchange server, Files server
+o	Zone publique de Gestion : Jump Point, VPN. SSH server
+o	Zone Scada : equipements SCADA
+-	Zone LAN interne (utilisateurs) : PC- printers – telephonie IP -Visio conference
+-	Points d’interface de zone (PIZ) : est le concept logique servant à décrire l’interface contrôlée qui relie deux zones. Il s’agit de l’interface réseau interzone.
+
+
+Quelques déplacements entre les zones sont nécessaires : 
+•	Les serveurs DNS autoritaires : Ils devraient être déplacés de la DMZ vers la zone LAN interne afin de les isoler du trafic Internet et de réduire le risque d'attaque par DOS.
+•	Le serveur de messagerie Exchange 2019 va être déplacé de la DMZ vers la zone LAN interne pour éviter qu'il soit directement exposé à Internet et réduire le risque de compromission des données de messagerie.
+•	Le poste agissant comme « jump point » va être déplacé de la DMZ vers la zone LAN interne pour éviter qu'il soit directement exposé à Internet et réduire le risque de compromission de l'interface SSH.
+•	Les bases de données et les serveurs de fichiers devraient être déplacés dans des sous zones dans la zone LAN (respectivement la ZAR et la ZOG). Les règles de pare-feu étant mises à jour pour gérer les entrées et les sorties du trafic à partir du LAN.
