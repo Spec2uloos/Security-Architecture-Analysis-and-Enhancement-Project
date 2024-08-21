@@ -23,3 +23,42 @@ Quelques déplacements entre les zones sont nécessaires :
 •	Le serveur de messagerie Exchange 2019 va être déplacé de la DMZ vers la zone LAN interne pour éviter qu'il soit directement exposé à Internet et réduire le risque de compromission des données de messagerie.
 •	Le poste agissant comme « jump point » va être déplacé de la DMZ vers la zone LAN interne pour éviter qu'il soit directement exposé à Internet et réduire le risque de compromission de l'interface SSH.
 •	Les bases de données et les serveurs de fichiers devraient être déplacés dans des sous zones dans la zone LAN (respectivement la ZAR et la ZOG). Les règles de pare-feu étant mises à jour pour gérer les entrées et les sorties du trafic à partir du LAN.
+
+
+
+
+L’architecture proposée :
+
+Zone DMZ (Demilitarized Zone) :
+
+Dans cette zone, les services exposés au public sont hébergés, tout en maintenant une certaine séparation avec le réseau interne. Les composants de la DMZ comprennent :
+Serveurs Web : Ces serveurs hébergent les applications et les services accessibles depuis Internet.
+Relais DNS : Ils fournissent des services de résolution de noms de domaine pour les demandes DNS entrantes depuis Internet.
+Serveur SFTP : Utilisé pour le partage sécurisé de fichiers à l'intérieur de l'entreprise.
+
+
+Zone LAN :
+
+La zone LAN est subdivisée en plusieurs sous-zones pour mieux organiser les services et les ressources de l'entreprise :
+
+      Zone D’Accès restreint (ZAR) : Cette zone abrite les serveurs critiques, tels que les serveurs de sauvegarde, les serveurs MSSQL ainsi que le SIEM et les outils de surveillance et de sécurité.
+    
+      Zone Opérationnelle de Gestion : Cette zone comprend les services de base de l'entreprise, tels que l'Active Directory (AD), le DHCP ,les serveurs DNS, Exchange Server (messagerie) et les serveurs de fichiers.
+    
+      Zone Publique de Gestion : Ici, on trouve des services permettant l'administration et la gestion à distance, tels que le Jump Point (point de saut) pour l'accès aux serveurs dans le LAN, les VPN pour les connexions sécurisées, et les serveurs SSH pour l'accès sécurisé à distance.
+    
+      Zone SCADA : Cette zone est dédiée aux équipements SCADA, utilisés pour surveiller et contrôler les systèmes industriels.
+
+
+Zone LAN Interne (Utilisateurs) :
+Cette zone est destinée aux utilisateurs finaux et aux appareils de bureau, tels que les PC, les imprimantes, les téléphones IP et les systèmes de visioconférence. 
+
+
+Points d'Interface de Zone (PIZ) :
+Les PIZ représentent les interfaces entre les différentes zones du réseau. Ils servent de frontières contrôlées, régissant le flux de données entre les zones et garantissant une segmentation efficace pour renforcer la sécurité du réseau.
+
+
+
+
+
+
