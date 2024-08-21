@@ -53,7 +53,6 @@
       
       /scripts: Scripts and configuration files for implementing the proposed solutions.
       
-      /tests: Test cases and results demonstrating the functionality of the implemented solutions.
 
 
 * Installation and Setup
